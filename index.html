@@ -6,14 +6,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
+    <input type="number" class="form-control" id="length-input" placeholder="Isi Dengan Angka">
 
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-sm" id="segitiga">
+            Generate Segitiga
+        </button>
+        <button class="btn btn-sm" id="ganjil">
+            Generate Bilangan Ganjil
+        </button>
+        <button class="btn btn-sm" id="prima">
+            Generate Bilangan Prima
+        </button>
+    </div>
+
+    <hr>
+    <div style="margin: 10px;">
+        <h1>Result</h1>
+        <div id="hasil">
+
+        </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+
+        $('#ganjil').on('click', function () {
+            $('#hasil').empty()
+            var length = $('#length-input').val()
+            var hasil = ""
+            for (let index = 0; index < length; index++) {
+                if (index % 2 != 0) {
+                    hasil += index + ", "
+                }
+            }
+            $('#hasil').html(hasil);
+        })
+
+        $('#segitiga').on('click', function () {
+            $('#hasil').empty()
+            var inputArr = $('#length-input').val()
+            var data = inputArr.split('')
+            for (let index = 0; index < data.length; index++) {
+                var hasil = ""
+                hasil = data[index];
+                for (let index2 = 0; index2 < index + 1; index2++) {
+                    hasil += 0
+                }
+                $('#hasil').append(hasil + "<br>");
+            }
+        })
+
+        $('#prima').on('click', function () {
+            $('#hasil').empty()
+            var length = $('#length-input').val()
+            var hasil = ''
+            for (let index = 1; index < length; index++) {
+                if (((index != 1 && index % 2 != 0) || index == 2 || index == 3) && (index % 3 != 0 || index == 3) && index % 5 != 0) {
+                    if (index < length - 1) {
+                        hasil += index + " ,"
+                    }
+                }
+            }
+            $('#hasil').html(hasil)
+        })
+
+
+    </script>
 </body>
 
 </html>
